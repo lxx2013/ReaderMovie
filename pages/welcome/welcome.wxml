@@ -1,0 +1,8 @@
+<view class='index'>
+  <image  style = "width:200rpx;height:200rpx;" src="../../images/avatar/4.png" ></image>
+  <!-- 只有 text 包围的文字可以在手机上长按选中 -->
+  <text>Hello, ７月</text> 
+  <view>
+    <text>开启小程序之旅</text>
+  </view>
+</view>
