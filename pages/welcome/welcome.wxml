@@ -1,8 +1,8 @@
-<view class='index'>
-  <image  style = "width:200rpx;height:200rpx;" src="../../images/avatar/4.png" ></image>
+<view class='container'>
+  <image class="user-avatar" src="../../images/avatar/4.png" ></image>
   <!-- 只有 text 包围的文字可以在手机上长按选中 -->
-  <text>Hello, ７月</text> 
-  <view>
-    <text>开启小程序之旅</text>
+  <text class='user-name'>Hello, ７月</text> 
+  <view class='moto-container'>
+    <text class='moto'>开启小程序之旅</text>
   </view>
 </view>
