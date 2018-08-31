@@ -9,7 +9,14 @@ Page({
       postList: require('../../data/posts-data.js').postList
     });
   },
-
+  onPostTap(event){
+    var postId = event.currentTarget.dataset.postid;
+     console.log(`on post id is ${postId}`);
+     console.log(event);
+    wx.navigateTo({
+      url: "./post-detail/post-detail?id=" + postId
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
