@@ -29,7 +29,7 @@ var local_database = [
     headImgSrc: "/images/post/bl.png",
     author: "迷的城",
     date: "Nov 20 2016",
-    avatar: "/images/avatar/1.png",
+    avatar: "/images/avatar/2.png",
     postId: 1,
     music: {
       url: "http://ws.stream.qqmusic.qq.com/C100003GdCmG4NkEOR.m4a?fromtag=38",
@@ -87,7 +87,7 @@ var local_database = [
     headImgSrc: "/images/post/vr.png",
     author: "深白色",
     date: "Nov 20 2016",
-    avatar: "../../../images/avatar/3.png",
+    avatar: "../../../images/avatar/4.png",
     postId: 4,
     music: {
       url: "http://ws.stream.qqmusic.qq.com/C100000Zn0vS4fKKo8.m4a?fromtag=38",
