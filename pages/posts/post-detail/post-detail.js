@@ -1,7 +1,10 @@
 var postData = require('../../../data/posts-data.js')
 Page({
   data: {
-    isPlayingMusic: false
+    /** 是否在播放音乐 */
+    isPlayingMusic: false,
+    /** 是否收藏了该文章*/
+    collected: false
   },
   onLoad: function(option) {
     console.log('id', option.id)

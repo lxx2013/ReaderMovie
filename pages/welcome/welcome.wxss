@@ -8,8 +8,8 @@
 }
 
 .user-avatar{
-  width:200rpx;
-  height:200rpx;
+  width:50pt;
+  height:50pt;
   margin-top:160rpx;
 }
 .user-name{
@@ -18,7 +18,7 @@
   margin-top: 100rpx;
 }
 .moto{
-  font-size: 22rpx;
+  font-size: 11px;
   font-weight: bold;
   line-height: 80rpx;
   color:#405f80;

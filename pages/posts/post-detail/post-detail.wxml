@@ -1,4 +1,3 @@
-
 <!--先静后动，先样式再数据-->
 <view class="container">
   <image class="head-image" src="{{isPlayingMusic?postData.music.coverImg:postData.headImgSrc}}"></image>
@@ -12,9 +11,8 @@
   <text class="title">{{postData.title}}</text>
   <view class="tool">
     <view class="circle-img">
-      <image wx:if="{{collected}}" catchtap="onCollectionTap"  src="/images/icon/collection.png"></image>
-      <image wx:else catchtap="onCollectionTap" src="/images/icon/collection-anti.png"></image>
-      <image catchtap="onShareTap"  class="share-img" src="/images/icon/share.png"></image>
+      <image catchtap="onCollectionTap" src="/images/icon/collection{{collected?'':'-anti'}}.png"></image>
+      <image catchtap="onShareTap" class="share-img" src="/images/icon/share.png"></image>
     </view>
     <view class="horizon"></view>
   </view>

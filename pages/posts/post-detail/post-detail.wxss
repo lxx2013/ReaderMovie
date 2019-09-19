@@ -102,4 +102,5 @@
   line-height: 44rpx;
   letter-spacing: 2px;
   font-size: 24rpx;
+  word-break: break-all;
 }

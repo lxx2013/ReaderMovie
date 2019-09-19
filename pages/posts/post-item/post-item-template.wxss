@@ -10,15 +10,17 @@ swiper image{
 .post-container{
   display:flex;
   flex-direction: column;
-  margin-top: 20rpx;
-  margin-bottom: 40rpx;
+  margin:  20px 15px;
+  border-radius: 5px;
   background-color: white;
   border-bottom: 1px solid #ededed;
   border-top :1px solid #ededed;
-  padding-bottom: 5px;
+  padding: 20px 0;
+  box-shadow:0 0 3px 0 #ccc;
 }
+
 .post-author-date{
-  margin:10rpx 0 20rpx 10rpx;
+  margin:0rpx 0 20rpx 10rpx;
 }
 .post-author{
   width: 60rpx;
