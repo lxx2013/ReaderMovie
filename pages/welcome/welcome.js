@@ -12,7 +12,7 @@ Page({
     })
   },
   onTap(e){
-    wx.redirectTo({
+    wx.switchTab({
       url: '../posts/post',
     })
     console.log(this.data)

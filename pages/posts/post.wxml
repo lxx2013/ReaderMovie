@@ -1,9 +1,11 @@
 <import src="post-item/post-item-template.wxml" />
 
 <view>
-  <swiper indicator-dots autoplay interval="2000">
-    <block wx:for="{{swiperUrls}}" wx:key="item">
-      <swiper-item style="background-image: url({{item}})"></swiper-item>
+  <swiper indicator-dots autoplay interval="2000" bind:tap="onSwiperTap">
+    <block wx:for="{{swiperItems}}" wx:key="item.id">
+      <swiper-item>
+        <image mode="aspectFill" src="{{item.imgSrc}}" data-post-id="{{item.postId}}"></image>
+      </swiper-item>
     </block>
   </swiper>
   <block wx:for="{{postList}}" wx:for-item="item" wx:key="index">

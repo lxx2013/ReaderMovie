@@ -1,17 +1,12 @@
+const postList = require('../../data/posts-data.js').postList
 Page({
 
   data: {
-    //小程序总是会读取data对象来做数据绑定，这个动作我们称为动作A
-    // 而这个动作A的执行，是在onLoad函数执行之后发生的
-    swiperUrls:[
-      'https://i.loli.net/2019/09/19/Wa8tgIE1R36nMKm.png',
-      'https://i.loli.net/2019/09/19/yrwa9e8zZLBMp3E.png',
-      'https://i.loli.net/2019/09/19/2B4xVv5PIGXbqUQ.png',
-    ]
+    swiperItems: postList.slice(-3)
   },
   onLoad: function () {
     this.setData({
-      postList: require('../../data/posts-data.js').postList
+      postList
     });
   },
   onPostTap(event){
@@ -20,6 +15,11 @@ Page({
      console.log(event);
     wx.navigateTo({
       url: "./post-detail/post-detail?id=" + postId
+    })
+  },
+  onSwiperTap(event){
+    wx.navigateTo({
+      url: "./post-detail/post-detail?id=" + event.target.dataset.postId
     })
   },
   /**

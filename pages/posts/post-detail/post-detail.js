@@ -1,6 +1,7 @@
 var postData = require('../../../data/posts-data.js')
 Page({
   data: {
+    postData:{},
     /** 是否在播放音乐 */
     isPlayingMusic: false,
     /** 是否收藏了该文章*/
@@ -25,37 +26,53 @@ Page({
       collected_object[postId] = false;
       wx.setStorageSync('collected_object', collected_object);
     }
-
+    if (wx.getBackgroundAudioManager().paused === false){
+      this.setData({ isPlayingMusic: true })
+    }
   },
   onMusicTap: function() {
-    this.setData({
-      isPlayingMusic: !this.data.isPlayingMusic
-    })
-
-    console.log('this.data.isPlayingMusic', this.data.isPlayingMusic)
+    try{
+      var bgm = wx.getBackgroundAudioManager()
+      if (!this.data.isPlayingMusic) {
+        Object.assign(bgm, {
+          src: 'https://i.setsuna.wang/SING%E5%A5%B3%E5%9B%A2%20-%20%E5%AF%84%E6%98%8E%E6%9C%88.mp3',
+          title: '寄明月',
+          coverImgUrl: 'https://eleme.setsuna.wang/touma2.jpg'
+        })
+      }else{
+        bgm.pause()
+      }
+      this.setData({ isPlayingMusic: !this.data.isPlayingMusic })
+    }catch(err){
+      console.error(err)
+    }
   },
   onCollectionTap: function() {
     console.log('onCollectionTap')
-    this.changeCollectedAsy();
+    let id = this.data.currentPostId
+    let data = (wx.getStorageSync('collected_object') || {})
+    // 询问是否要取消收藏
+    if (data[id]) {
+      wx.showModal({
+        content: '真的要取消收藏吗?',
+        showCancel: true,
+        cancelText: 'cancel',
+        confirmText: 'confirm',
+        success: (res)=>{ res.confirm && this.changeCollectedAsync() }
+      })
+    } else {
+      this.changeCollectedAsync()
+    }
   },
-  changeCollectedAsy: function() {
-    var that = this;
-    wx.getStorage({
-      key: "collected_object",
-      success: function(res) {
-        var data = res.data;
-        var p = data[that.data.currentPostId];
-        data[that.data.currentPostId] = !p;
-        // 收藏变成未收藏，未收藏变成收藏
-        // 更新文章是否的缓存值
-        wx.setStorageSync('collected_object', data);
-        // 更新数据绑定变量，从而实现切换图片
-        that.setData({
-          collected: !p
-        })
-        that.showToast(!p);
-      }
+  changeCollectedAsync: function() {
+    let id = this.data.currentPostId
+    let data = wx.getStorageSync('collected_object') || {}
+    data[id] ^= 1;
+    wx.setStorageSync('collected_object', data);
+    this.setData({
+      collected: data[id]
     })
+    this.showToast(data[id]);
   },
   showToast: function(c) {
     wx.showToast({
@@ -64,5 +81,13 @@ Page({
       icon: "success"
     })
   },
-
+  onShareTap(e){
+    wx.showActionSheet({
+      itemList: "微信好友 朋友圈 QQ 微博".split(' ').map(x=>'分享到'+x),
+      itemColor:'#405f80',
+      success(res){
+        console.log(res)
+      }
+    })
+  }
 })
